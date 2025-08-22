@@ -1,23 +1,16 @@
-# render.yaml – All-in-One BOT Telegram Bot
+# render.yaml – Free-plan Telegram Bot
 services:
   - type: web
     name: txt-extractor-bot
     env: python
-    region: singapore          # change to frankfurt / singapore etc. if you like
-    plan: Free
-    buildCommand: |
-      pip install -r requirements.txt
+    region: singapore        # Free tier available in oregon
+    plan: free            # 👈 FREE tier
+    buildCommand: pip install -r requirements.txt
     startCommand: python -m bot
     envVars:
-      # Telegram
-      - key: BOT_TOKEN
-        sync: false         # enter via Render dashboard
-      - key: API_ID
+      - key: BOT_TOKEN    # @BotFather se
         sync: false
-      - key: API_HASH
+      - key: API_ID       # my.telegram.org se
         sync: false
-      # Optional persistent downloads
-    disk:
-      name: downloads
-      mountPath: /app/downloads
-      sizeGB: 5
+      - key: API_HASH     # my.telegram.org se
+        sync: false
